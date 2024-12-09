@@ -1,27 +1,7 @@
 package controllers
-
 import java.util.*
-
 val FILAS = 20
 val BUTAQUES = 15
-
-fun main() {
-    val sala = Array(FILAS) { BooleanArray(BUTAQUES) { false } } // false indica que el seient està lliure
-    val scanner = Scanner(System.`in`)
-    var opcio: Int
-
-    do {
-        opcio = mostrarMenu(scanner)
-        when (opcio) {
-            1 -> buidarSala(sala)
-            2 -> visualitzarSeients(sala)
-            3 -> reservarSeient(sala, scanner)
-            0 -> println("Sortint del programa...")
-            else -> println("Opció no vàlida. Si us plau, intenta-ho de nou.")
-        }
-    } while (opcio != 0)
-}
-
 fun mostrarMenu(scanner: Scanner): Int {
     println("\nMenú de reserva de seients:")
     println("1. Buidar sala")
@@ -31,7 +11,6 @@ fun mostrarMenu(scanner: Scanner): Int {
     print("Selecciona una opció: ")
     return scanner.nextInt()
 }
-
 fun buidarSala(sala: Array<BooleanArray>) {
     for (fila in sala) {
         for (i in fila.indices) {
@@ -40,7 +19,6 @@ fun buidarSala(sala: Array<BooleanArray>) {
     }
     println("La sala ha estat buidada.")
 }
-
 fun visualitzarSeients(sala: Array<BooleanArray>) {
     println("\nEstat dels seients:")
     for (i in sala.indices) {
@@ -54,7 +32,6 @@ fun visualitzarSeients(sala: Array<BooleanArray>) {
         println()
     }
 }
-
 fun reservarSeient(sala: Array<BooleanArray>, scanner: Scanner) {
     println("Introdueix les coordenades del seient a reservar (fila i butaca):")
     print("Fila (0-${FILAS - 1}): ")
@@ -72,4 +49,21 @@ fun reservarSeient(sala: Array<BooleanArray>, scanner: Scanner) {
     } else {
         println("Coordenades no vàlides. Si us plau, intenta-ho de nou.")
     }
+}
+
+
+fun main() {
+    val sala = Array(FILAS) { BooleanArray(BUTAQUES) { false } } // false indica que el seient està lliure
+    val scanner = Scanner(System.`in`)
+    var opcio: Int
+    do {
+        opcio = mostrarMenu(scanner)
+        when (opcio) {
+            1 -> buidarSala(sala)
+            2 -> visualitzarSeients(sala)
+            3 -> reservarSeient(sala, scanner)
+            0 -> println("Sortint del programa...")
+            else -> println("Opció no vàlida. Si us plau, intenta-ho de nou.")
+        }
+    } while (opcio != 0)
 }

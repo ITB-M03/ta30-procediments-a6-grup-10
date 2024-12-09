@@ -2,15 +2,6 @@ package controllers
 import java.util.*
 val FILAS = 20
 val BUTAQUES = 15
-fun mostrarMenu(scanner: Scanner): Int {
-    println("\nMenú de reserva de seients:")
-    println("1. Buidar sala")
-    println("2. Visualitzar seients disponibles")
-    println("3. Reserva de seients")
-    println("0. Sortir")
-    print("Selecciona una opció: ")
-    return scanner.nextInt()
-}
 fun buidarSala(sala: Array<BooleanArray>) {
     for (fila in sala) {
         for (i in fila.indices) {
@@ -50,7 +41,15 @@ fun reservarSeient(sala: Array<BooleanArray>, scanner: Scanner) {
         println("Coordenades no vàlides. Si us plau, intenta-ho de nou.")
     }
 }
-
+fun mostrarMenu(scanner: Scanner): Int {
+    println("\nMenú de reserva de seients:")
+    println("1. Buidar sala")
+    println("2. Visualitzar seients disponibles")
+    println("3. Reserva de seients")
+    println("0. Sortir")
+    print("Selecciona una opció: ")
+    return scanner.nextInt()
+}
 
 fun main() {
     val sala = Array(FILAS) { BooleanArray(BUTAQUES) { false } } // false indica que el seient està lliure
